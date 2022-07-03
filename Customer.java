@@ -6,9 +6,9 @@ public class Customer{
     private Adresse address;
     private boolean active;
 
-    public Customer(String name, String strasseNr, String ort, String plz, String land){
+    public Customer(String name, Adresse address){
         this.name = name;
-        this.address = new Adresse(strasseNr, ort, plz, land);
+        this.address = address;
         addLog("Die Firma " + name + " ist angelegt.");
         this.active = true;
     }
