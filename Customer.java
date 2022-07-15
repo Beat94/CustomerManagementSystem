@@ -1,36 +1,44 @@
 import java.util.ArrayList;
 
-public class Customer{
+public class Customer {
     private String name;
     private ArrayList<Log> cLog = new ArrayList<Log>();
     private Adresse address;
     private boolean active;
 
-    public Customer(String name, Adresse address){
+    public Customer(String name, Adresse address) {
         this.name = name;
         this.address = address;
         addLog("Die Firma " + name + " ist angelegt.");
         this.active = true;
     }
 
-    public void addLog(String note){
+    public void addLog(String note) {
         this.cLog.add(new Log(note));
     }
 
-    public String getName(){
+    public String getName() {
         return this.name;
     }
 
-    public void setName(String name){
+    public void setName(String name) {
         this.name = name;
     }
 
-    public boolean getActive(){
+    public boolean getActive() {
         return this.active;
     }
 
-    public void setActive(boolean active){
+    public void setActive(boolean active) {
         this.active = active;
+    }
+
+    public Adresse getAddress() {
+        return this.address;
+    }
+
+    public void setAddress(Adresse address) {
+        this.address = address;
     }
 
 }
