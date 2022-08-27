@@ -22,4 +22,12 @@ public class Startup {
         frame.setLayout(null);
         frame.setVisible(true);
     }
+
+    private static void startUi(String UI){
+        if(UI.toLowerCase().equals("cli")){
+            System.out.println("CLI");
+        }else if(UI.toLowerCase().equals("gui")){
+            System.out.println("GUI");
+        }
+    }
 }
