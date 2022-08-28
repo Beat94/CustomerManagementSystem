@@ -1,4 +1,5 @@
 import javax.swing.JButton;
+import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -18,7 +19,7 @@ public class GUI {
         // JComboBox: https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html
         JComboBox customerChooser = new JComboBox();
         JButton changeCustomerNameButton = new JButton("Name ändern");
-        JLabel activeText = new JLabel("Aktiv:");
+        JCheckBox activeCheckBox = new JCheckBox("Aktiv:");
 
         options.add(save);
         options.add(load);
@@ -27,12 +28,12 @@ public class GUI {
 
         frame.add(customerChooser);
         frame.add(changeCustomerNameButton);
-        frame.add(activeText);
+        frame.add(activeCheckBox);
         frame.setJMenuBar(menuBar);
         
         customerChooser.setBounds(10, 20, 150, 25);
         changeCustomerNameButton.setBounds(170, 20, 150, 25);
-        activeText.setBounds(10, 55, 70, 25);
+        activeCheckBox.setBounds(10, 55, 70, 25);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400,200);
