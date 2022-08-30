@@ -20,6 +20,7 @@ public class GUI {
         JComboBox customerChooser = new JComboBox();
         JButton changeCustomerNameButton = new JButton("Name ändern");
         JCheckBox activeCheckBox = new JCheckBox("Aktiv:");
+        JLabel adressLabel = new JLabel("Adresse:");
 
         options.add(save);
         options.add(load);
@@ -33,7 +34,7 @@ public class GUI {
         
         customerChooser.setBounds(10, 20, 150, 25);
         changeCustomerNameButton.setBounds(170, 20, 150, 25);
-        activeCheckBox.setBounds(10, 55, 70, 25);
+        activeCheckBox.setBounds(170, 55, 70, 25);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400,200);
