@@ -1,3 +1,6 @@
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
 import javax.swing.JComboBox;
@@ -16,25 +19,38 @@ public class GUI {
         JMenu options = new JMenu("Options");
         JMenuItem save = new JMenuItem("save");
         JMenuItem load = new JMenuItem("load");
+        JMenuItem newCustomer = new JMenuItem("neuer Kunde");
         // JComboBox: https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html
         JComboBox customerChooser = new JComboBox();
         JButton changeCustomerNameButton = new JButton("Name ändern");
         JCheckBox activeCheckBox = new JCheckBox("Aktiv:");
         JLabel adressLabel = new JLabel("Adresse:");
+        JLabel adressCustomerLabel = new JLabel("Strasse\nOrt");
+
+        newCustomer.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e){
+                GUINewCustomer GuiCustomer = new GUINewCustomer();
+                GuiCustomer.start();
+            }
+        });
 
         options.add(save);
         options.add(load);
+        options.add(newCustomer);
 
         menuBar.add(options);
 
         frame.add(customerChooser);
         frame.add(changeCustomerNameButton);
         frame.add(activeCheckBox);
+        frame.add(adressLabel);
         frame.setJMenuBar(menuBar);
         
         customerChooser.setBounds(10, 20, 150, 25);
         changeCustomerNameButton.setBounds(170, 20, 150, 25);
         activeCheckBox.setBounds(170, 55, 70, 25);
+        adressLabel.setBounds(75, 75, 70, 25);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400,200);
