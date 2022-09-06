@@ -10,6 +10,7 @@ public class Customer{
         this.name = name;
         this.address = new Adresse(strasseNr, ort, plz, land);
         this.active = true;
+        addCustomerLog("Initialisierung des Kunden " + name);
     }
 
     public String getName() {
@@ -35,5 +36,10 @@ public class Customer{
     public void setAddress(Adresse address) {
         this.address = address;
     }
+
+    public void addCustomerLog(String message){
+        this.cLog.add(new Log(message));
+    }
+
 
 }

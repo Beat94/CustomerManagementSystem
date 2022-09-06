@@ -9,8 +9,6 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
-import javax.swing.JViewport;
-import javax.swing.text.JTextComponent;
 
 public class GUI {
     public void start(){
