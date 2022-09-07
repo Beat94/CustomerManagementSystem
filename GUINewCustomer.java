@@ -1,3 +1,4 @@
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
@@ -26,9 +27,10 @@ public class GUINewCustomer {
         JTextField ZipCodeField = new JTextField();
 
         // Save-function / Button
-        
+        JButton SaveButton = new JButton("Save");
 
         // Cancel-Button
+        JButton CancelButton = new JButton("Cancel");
 
         FirmLabel.setBounds(10,10,100,25);
         FirmTextField.setBounds(120,10,100,25);
@@ -40,6 +42,8 @@ public class GUINewCustomer {
         LocationTextField.setBounds(120,100,100,25);
         ZipCodeLabel.setBounds(10,130,100,25);
         ZipCodeField.setBounds(120,130,100,25);
+        SaveButton.setBounds(10,160,100,25);
+        CancelButton.setBounds(120, 160, 100, 25);
 
         customerFrame.add(FirmLabel);
         customerFrame.add(FirmTextField);
@@ -51,9 +55,11 @@ public class GUINewCustomer {
         customerFrame.add(LocationTextField);
         customerFrame.add(ZipCodeLabel);
         customerFrame.add(ZipCodeField);
+        customerFrame.add(SaveButton);
+        customerFrame.add(CancelButton);
 
         customerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        customerFrame.setSize(400,200);
+        customerFrame.setSize(400,250);
         
         customerFrame.setLayout(null);
         customerFrame.setVisible(true);
