@@ -28,8 +28,7 @@ public class GUI {
         newCustomer.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
-                GUINewCustomer GuiCustomer = new GUINewCustomer();
-                GuiCustomer.start();
+                startGUINewCustomer();
             }
         });
 
@@ -55,5 +54,86 @@ public class GUI {
         
         frame.setLayout(null);
         frame.setVisible(true);
+    }
+
+    public void startGUINewCustomer(){
+        JFrame customerFrame = new JFrame("Kunde erfassen");
+        // Firmenname
+        JLabel FirmLabel = new JLabel("Firmenname:");
+        JTextField FirmTextField = new JTextField();
+        
+        // Strasse
+        JLabel StreetLabel = new JLabel("Strassenname:");
+        JTextField StreetTextField = new JTextField();
+        
+        // Strassennr.
+        JLabel StreetNrLabel = new JLabel("Strassennummer:");
+        JTextField StreetNrTextField = new JTextField();
+
+        // Ort
+        JLabel LocationLabel = new JLabel("Ort:");
+        JTextField LocationTextField = new JTextField();
+
+        // PLZ
+        JLabel ZipCodeLabel = new JLabel("PLZ:");
+        JTextField ZipCodeTextField = new JTextField();
+
+        // Save-function / Button
+        JButton SaveButton = new JButton("Save");
+
+        // Cancel-Button
+        JButton CancelButton = new JButton("Cancel");
+
+        FirmLabel.setBounds(10,10,100,25);
+        FirmTextField.setBounds(120,10,100,25);
+        StreetLabel.setBounds(10,40,100,25);
+        StreetTextField.setBounds(120,40,100,25);
+        StreetNrLabel.setBounds(10,70,100,25);
+        StreetNrTextField.setBounds(120,70,100,25);
+        LocationLabel.setBounds(10,100,100,25);
+        LocationTextField.setBounds(120,100,100,25);
+        ZipCodeLabel.setBounds(10,130,100,25);
+        ZipCodeTextField.setBounds(120,130,100,25);
+        SaveButton.setBounds(10,160,100,25);
+        CancelButton.setBounds(120, 160, 100, 25);
+
+        customerFrame.add(FirmLabel);
+        customerFrame.add(FirmTextField);
+        customerFrame.add(StreetLabel);
+        customerFrame.add(StreetTextField);
+        customerFrame.add(StreetNrLabel);
+        customerFrame.add(StreetNrTextField);
+        customerFrame.add(LocationLabel);
+        customerFrame.add(LocationTextField);
+        customerFrame.add(ZipCodeLabel);
+        customerFrame.add(ZipCodeTextField);
+        customerFrame.add(SaveButton);
+        customerFrame.add(CancelButton);
+
+        SaveButton.addActionListener(new ActionListener(){
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                // get Values from FirmTextField
+                FirmTextField.getText();
+
+                // get Values from StreetTextField
+                // get Values from StreetNrLabel
+                // get Values from LocationTextField
+                // get Values from ZipCodeField
+                // get Values from ZipCodeTextField
+
+                // Write it in CustomerManager
+                // Relaod Parent GUI
+
+                // close this gui
+            }
+        });
+
+
+        customerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        customerFrame.setSize(400,250);
+        
+        customerFrame.setLayout(null);
+        customerFrame.setVisible(true);
     }
 }
