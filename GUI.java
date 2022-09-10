@@ -1,4 +1,5 @@
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
@@ -9,17 +10,23 @@ import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 
 public class GUI {
+    private CustomerManager CustomerManager = new CustomerManager();
+    // Menu Items of first frame
+    private JFrame frame = new JFrame("Customer Management System");
+    private JComboBox customerChooser = new JComboBox();
+
     public void start(){
-        JFrame frame = new JFrame("Customer Management System");
+        //JFrame frame = new JFrame("Customer Management System");
         JMenuBar menuBar = new JMenuBar();
         JMenu options = new JMenu("Options");
         JMenuItem save = new JMenuItem("save");
         JMenuItem load = new JMenuItem("load");
         JMenuItem newCustomer = new JMenuItem("neuer Kunde");
         // JComboBox: https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html
-        JComboBox customerChooser = new JComboBox();
         JButton changeCustomerNameButton = new JButton("Name ändern");
         JCheckBox activeCheckBox = new JCheckBox("Aktiv:");
         JLabel adressLabel = new JLabel("Adresse:");
@@ -78,6 +85,10 @@ public class GUI {
         JLabel ZipCodeLabel = new JLabel("PLZ:");
         JTextField ZipCodeTextField = new JTextField();
 
+        // Land
+        JLabel CountryLabel = new JLabel("Land:");
+        JTextField CountryTextField = new JTextField();
+
         // Save-function / Button
         JButton SaveButton = new JButton("Save");
 
@@ -94,8 +105,10 @@ public class GUI {
         LocationTextField.setBounds(120,100,100,25);
         ZipCodeLabel.setBounds(10,130,100,25);
         ZipCodeTextField.setBounds(120,130,100,25);
-        SaveButton.setBounds(10,160,100,25);
-        CancelButton.setBounds(120, 160, 100, 25);
+        CountryLabel.setBounds(10,160,100,25);
+        CountryTextField.setBounds(120, 160, 100, 25);
+        SaveButton.setBounds(10,190,100,25);
+        CancelButton.setBounds(120, 190, 100, 25);
 
         customerFrame.add(FirmLabel);
         customerFrame.add(FirmTextField);
@@ -107,6 +120,8 @@ public class GUI {
         customerFrame.add(LocationTextField);
         customerFrame.add(ZipCodeLabel);
         customerFrame.add(ZipCodeTextField);
+        customerFrame.add(CountryLabel);
+        customerFrame.add(CountryTextField);
         customerFrame.add(SaveButton);
         customerFrame.add(CancelButton);
 
@@ -114,26 +129,53 @@ public class GUI {
             @Override
             public void actionPerformed(ActionEvent e) {
                 // get Values from FirmTextField
-                FirmTextField.getText();
+                String Firmname = FirmTextField.getText();
 
                 // get Values from StreetTextField
+                String Streetname = StreetTextField.getText();
+
                 // get Values from StreetNrLabel
+                String StreetNr = StreetNrTextField.getText();
+
                 // get Values from LocationTextField
+                String Location = LocationTextField.getText();
+
                 // get Values from ZipCodeField
-                // get Values from ZipCodeTextField
+                String Zip = ZipCodeTextField.getText();
+
+                String Country = CountryTextField.getText();
 
                 // Write it in CustomerManager
+                Adresse Adresse = new Adresse(Streetname, StreetNr, Location, Zip, Country);
+                Customer Customer = new Customer(Firmname, Adresse);
+
+                CustomerManager.addCustomer(Customer);
                 // Relaod Parent GUI
+                //SwingUtilities.updateComponentTreeUI(frame);
+                frame.invalidate();
+                frame.validate();
 
                 // close this gui
+                customerFrame.dispose();
             }
         });
 
+        CancelButton.addActionListener(new ActionListener(){
+            public void actionPerformed(ActionEvent e){
+                customerFrame.dispose();
+            }
+        });
 
-        customerFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        customerFrame.setSize(400,250);
+        customerFrame.setDefaultCloseOperation(customerFrame.DISPOSE_ON_CLOSE);
+        customerFrame.setSize(400,270);
         
         customerFrame.setLayout(null);
         customerFrame.setVisible(true);
+    }
+
+    private void reloadCustomerChooser(){
+        ArrayList<Customer> cm = CustomerManager.getCustomerList();
+
+        
     }
 }

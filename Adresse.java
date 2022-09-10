@@ -1,14 +1,24 @@
 public class Adresse{
     private String strasseNr;
+    private String strasseName;
     private String ort;
     private String plz;
     private String land;
 
-    public Adresse(String strasseNr, String ort, String plz, String land){
+    public Adresse(String strasseName, String strasseNr, String ort, String plz, String land){
+        this.strasseName = strasseName;
         this.strasseNr = strasseNr;
         this.ort = ort;
         this.plz = plz;
         this.land = land;
+    }
+
+    public void setStrasseName(String newStrasseName){
+        this.strasseName = newStrasseName;
+    }
+
+    public String getStrasseName(){
+        return this.strasseName;
     }
 
     public void setStrasseNr(String newStrasseNr){
