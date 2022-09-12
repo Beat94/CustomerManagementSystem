@@ -1,5 +1,6 @@
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
+import java.util.Vector;
 import java.awt.event.ActionEvent;
 
 import javax.swing.JButton;
@@ -175,7 +176,13 @@ public class GUI {
 
     private void reloadCustomerChooser(){
         ArrayList<Customer> cm = CustomerManager.getCustomerList();
+        customerChooser.removeAll();
 
-        
+        Vector customerChooserModel = new Vector();
+
+        for(int i = 0; i < cm.size(); i++){
+            customerChooserModel.add(new Item(i, cm.getCustomerById(i).getName()));
+            //customerChooser.add(new Item(i, cm.getCustomerById(i).getName()));
+        }
     }
 }
