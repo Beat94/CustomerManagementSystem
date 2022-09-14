@@ -11,13 +11,20 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
+
+
+// Problem:
+// - gui reloading no clearing customerchooser possible
 
 public class GUI {
     private CustomerManager CustomerManager = new CustomerManager();
+    
     // Menu Items of first frame
     private JFrame frame = new JFrame("Customer Management System");
     private JComboBox customerChooser = new JComboBox();
+    private JCheckBox activeCheckBox = new JCheckBox("Aktiv:");
+    private JLabel adressLabel = new JLabel("Adresse:");
+    private JLabel adressCustomerLabel = new JLabel("Strasse\nOrt");
 
     public void start(){
         //JFrame frame = new JFrame("Customer Management System");
@@ -28,10 +35,7 @@ public class GUI {
         JMenuItem newCustomer = new JMenuItem("neuer Kunde");
         // JComboBox: https://docs.oracle.com/javase/tutorial/uiswing/components/combobox.html
         JButton changeCustomerNameButton = new JButton("Name ändern");
-        JCheckBox activeCheckBox = new JCheckBox("Aktiv:");
-        JLabel adressLabel = new JLabel("Adresse:");
-        JLabel adressCustomerLabel = new JLabel("Strasse\nOrt");
-
+        
         newCustomer.addActionListener(new ActionListener(){
             @Override
             public void actionPerformed(ActionEvent e){
@@ -152,8 +156,8 @@ public class GUI {
                 CustomerManager.addCustomer(Customer);
                 // Relaod Parent GUI
                 //SwingUtilities.updateComponentTreeUI(frame);
-                frame.invalidate();
-                frame.validate();
+                
+                reloadCustomerChooser();
 
                 // close this gui
                 customerFrame.dispose();
@@ -173,9 +177,21 @@ public class GUI {
         customerFrame.setVisible(true);
     }
 
-    private void reloadCustomerChooser(){
-        ArrayList<Customer> cm = CustomerManager.getCustomerList();
-
-        
+    private void reloadFrame(){
+        frame.invalidate();
+        frame.validate();
     }
+
+    private void reloadCustomerChooser(){
+        customerChooser.removeAllItems();
+        ArrayList<Customer> cm = CustomerManager.getCustomerList();
+        customerChooser.addItem("");
+
+        for(Customer customer : cm){
+            customerChooser.addItem(customer.getName());
+        }
+
+        reloadFrame();
+    }
+
 }
