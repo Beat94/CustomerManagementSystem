@@ -12,9 +12,8 @@ import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JTextField;
 
-
 // Problem:
-// - gui reloading no clearing customerchooser possible
+// - [ ] gui reloading no clearing customerchooser possible
 
 public class GUI {
     private CustomerManager CustomerManager = new CustomerManager();
