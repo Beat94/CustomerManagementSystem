@@ -177,22 +177,9 @@ public class GUI {
         customerFrame.setVisible(true);
     }
 
-<<<<<<< HEAD
-    private void reloadCustomerChooser(){
-        ArrayList<Customer> cm = CustomerManager.getCustomerList();
-        customerChooser.removeAll();
-
-        Vector customerChooserModel = new Vector();
-
-        for(int i = 0; i < cm.size(); i++){
-            customerChooserModel.add(new Item(i, cm.getCustomerById(i).getName()));
-            //customerChooser.add(new Item(i, cm.getCustomerById(i).getName()));
-        }
-=======
     private void reloadFrame(){
         frame.invalidate();
         frame.validate();
->>>>>>> cac81772a971f260888d68ccc4c8693ce103ee49
     }
 
     private void reloadCustomerChooser(){
