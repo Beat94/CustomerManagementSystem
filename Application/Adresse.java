@@ -29,13 +29,13 @@ public class Adresse{
     public String getStrasseNr(){
         return this.strasseNr;
     }
+    
+    public String getOrt(){
+        return this.ort;
+    }
 
     public void setOrt(String newOrt){
         this.ort = newOrt;
-    }
-
-    public String getOrt(){
-        return this.ort;
     }
 
     public void setPlz(String newPlz){
