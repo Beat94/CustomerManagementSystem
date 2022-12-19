@@ -27,7 +27,7 @@ public class GUI {
     private JComboBox customerChooser = new JComboBox();
     private JCheckBox activeCheckBox = new JCheckBox("Aktiv:");
     private JLabel adressLabel = new JLabel("Adresse:");
-    private JLabel adressCustomerLabel = new JLabel("Strasse\nOrt");
+    private JLabel adressCustomerLabel = new JLabel("<html>Ort/PLZ<br/>Strasse<br/>Land</html>");
 
     public void start(){
         //JFrame frame = new JFrame("Customer Management System");
@@ -56,12 +56,16 @@ public class GUI {
         frame.add(changeCustomerNameButton);
         frame.add(activeCheckBox);
         frame.add(adressLabel);
+        frame.add(adressCustomerLabel);
         frame.setJMenuBar(menuBar);
         
         customerChooser.setBounds(10, 20, 150, 25);
         changeCustomerNameButton.setBounds(170, 20, 150, 25);
         activeCheckBox.setBounds(170, 55, 70, 25);
         adressLabel.setBounds(75, 75, 70, 25);
+        adressCustomerLabel.setBounds(170,75,150,100);
+
+        customerChooser.actionPerformed(ActionEvent e);
 
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setSize(400,200);
@@ -181,7 +185,16 @@ public class GUI {
     }
 
     private void reloadFrame(){
+        Customer customer;
+
         frame.invalidate();
+
+
+        if(customerChooser.getSelectedItem() != null){
+            customer = CustomerManager.getCustomerById(customerChooser.getSelectedIndex() - 1);
+            adressCustomerLabel.setText("<html>" + customer.getAddress().getOrt() + " " + customer.getAddress().getPlz() + "<br/>" + customer.getAddress().getStrasseName() + " " + customer.getAddress().getStrasseNr() + "<br/>" + customer.getAddress().getLand() + "</html>");
+        }
+
         frame.validate();
     }
 
@@ -193,6 +206,8 @@ public class GUI {
         for(Customer customer : cm){
             customerChooser.addItem(customer.getName());
         }
+
+        
 
         reloadFrame();
     }
