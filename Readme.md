@@ -13,7 +13,11 @@ private (-)
 ```mermaid
 classDiagram
     Customer <|-- Adresse
+    Customer <|-- Log
     CustomerManager <|-- Customer
+    GUI <|-- CustomerManager
+    Startup <|-- GUI
+    Main <|-- Startup
 
     class Adresse{
         -strasseNr: String
@@ -62,18 +66,30 @@ classDiagram
     }
 
     class GUI{
-
+        -frame: JFrame
+        -customerChooser: JComboBox
+        -activeCheckBock: JCheckBox
+        -adressLabel: JLabel
+        -adressCustomerLabel: JLabel
+        +start(): void
+        +startGUINewCustomer(): void
+        -reloadFrame(): void
+        -reloadCustomerChooser(): void
     }
 
     class Log{
-
+        -text: String
+        -datumZeit: LocalDateTime
+        +getText(): String
+        +getDatumZeit(): LocalDateTime
     }
 
     class Main{
-
+        +cm: CustomerManager
+        +startup: Startup
     }
 
     class Startup{
-
+        
     }
 ```
